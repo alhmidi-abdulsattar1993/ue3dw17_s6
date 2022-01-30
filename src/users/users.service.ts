@@ -11,23 +11,23 @@ export class UsersService {
 
 constructor(@InjectModel('User') private readonly userModel: Model<Users>){}
 
-  create(createUserInput: CreateUserInput) {
-    return 'This action adds a new user';
+  async create(createUserInput: CreateUserInput): Promise<Users> {
+    return await this.userModel.save(firstname, lastname, email, createUserInput).exec();
   }
 
   findAll() {
-    return `This action returns all users`;
+    return this.userModel.find();
   }
 
-  findOne(id: string) {
-    return `This action returns a #${id} user`;
+  async findOne(id: string): Promise<Users> {
+    return await this.userModel.findById(id).exec();
   }
 
   async update(id: string, updateUserInput: UpdateUserInput): Promise<Users> {
     return await this.userModel.findByIdAndUpdate(id, updateUserInput).exec();
   }
 
-  remove(id: string) {
-    return `This action removes a #${id} user`;
+  async remove(id: string): Promise<Users> {
+    return await this.userModel.findByIdAndRemove(id).exec();
   }
 }
