@@ -13,7 +13,7 @@ import { UsersModule } from './users/users.module';
       autoSchemaFile: 'schema.gql',
     }),
     MongooseModule.forRoot(
-      process.env.MONGO_URL
+      'mongodb+srv://user:user@3dw17-s2.o3rkv.mongodb.net/lolel?retryWrites=true&w=majority'
     ),
     UsersModule
   ],
